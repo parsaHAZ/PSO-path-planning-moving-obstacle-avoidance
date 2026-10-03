@@ -3,14 +3,27 @@ __pycache__/
 *.py[cod]
 *$py.class
 
-# Virtual environment
+# Virtual environments
 venv/
 env/
 .venv/
-.env/
+ENV/
 
-# VS Code settings
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# IDEs / editors
 .vscode/
+.idea/
+*.code-workspace
+
+# Python tooling
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
 
 # Distribution / packaging
 build/
@@ -18,17 +31,42 @@ dist/
 *.egg-info/
 .eggs/
 
-# Logs and databases
+# Logs / temporary files
 *.log
 *.sqlite3
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
 
 # OS-specific files
 .DS_Store
 Thumbs.db
+desktop.ini
 
-# Jupyter Notebook checkpoints
-.ipynb_checkpoints/
+# Research outputs
+results/
+outputs/
+experiments/results/
 
-# Temporary files
-*.tmp
-*.temp
+# Model / checkpoint artifacts
+checkpoints/
+models/
+*.pkl
+*.pickle
+*.joblib
+*.h5
+*.hdf5
+*.pt
+*.pth
+*.onnx
+
+# Large raw / processed datasets
+data/raw/*
+!data/raw/synthetic/
+!data/raw/highd/
+
+data/processed/*
+!data/processed/synthetic/
+!data/processed/highd/
