@@ -141,6 +141,59 @@ class PSOPathPlanner:
 
         return (None, np.inf, -1, convergence)
 
+    def generate_candidates(self, n_candidates=5):
+        """
+        Generate multiple feasible trajectory candidates.
+
+        Each candidate is produced by running PSO with
+        a different deterministic random seed.
+
+        Returns
+        -------
+        candidates : list
+            Each item contains:
+                - candidate_id
+                - path
+                - cost
+                - best_iteration
+                - convergence
+                - seed
+        """
+        if self.scenario is None:
+            base_seed = 42
+        else:
+            base_seed = self.scenario.get("seed", 42)
+
+        candidates = []
+
+        for candidate_index in range(n_candidates):
+            candidate_seed = base_seed + candidate_index
+            self.random_seed = candidate_seed
+
+            path, cost, best_iteration, convergence = self.run()
+
+            if path is None:
+                continue
+
+            x, y = path
+
+            candidates.append({
+                "candidate_id": f"candidate_{candidate_index + 1:02d}",
+                "path": (x.copy(), y.copy()),
+                "cost": float(cost),
+                "best_iteration": int(best_iteration),
+                "convergence": convergence.copy(),
+                "seed": candidate_seed,
+            })
+
+        # Restore original scenario seed
+        if self.scenario is not None:
+            self.random_seed = self.scenario.get("seed", 42)
+        else:
+            self.random_seed = 42
+
+        return candidates
+
     def _spline_path(self, waypoints):
         points = np.vstack([self.start, waypoints, self.end]).T
 
