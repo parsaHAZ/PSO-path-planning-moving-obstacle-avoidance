@@ -1,0 +1,9 @@
+{
+  "generated_at": "2026-10-20T02:04:15+03:30",
+  "report": "artifacts/human_driving_research_report_v1/human_driving_history_traffic_context_report.md",
+  "report_bytes": 29431,
+  "history_metric_rows": 72,
+  "ablation_robustness_rows": 15,
+  "condition_metric_rows": 24,
+  "broad_bootstrap_rows": 18
+}
