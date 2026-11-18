@@ -1,4 +1,4 @@
-# Byte-compiled / optimized / DLL files
+﻿# Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
 *$py.class
@@ -70,3 +70,23 @@ data/raw/*
 data/processed/*
 !data/processed/synthetic/
 !data/processed/highd/
+
+# Local research outputs and experiment artifacts
+/artifacts/
+/data/pneuma/
+/data/preference/backup_before_comfort_fix/
+
+# Generated model and dataset files
+*.pt
+*.pth
+*.ckpt
+*.npy
+*.npz
+
+# Temporary experiment and diagnostic outputs
+*.log
+*.tmp
+*.bak
+
+# Local preference datasets
+/data/preference/*.csv
